@@ -36,7 +36,7 @@ var app = app || {};
 			this.$main = this.$('#main');
 			this.$list = $('#todo-list');
 
-			this.listenTo(app.todos, 'add', this.addOne);
+			this.listenTo(app.todos, 'add', this.add);
 			this.listenTo(app.todos, 'reset', this.addAll);
 			this.listenTo(app.todos, 'change:completed', this.filterOne);
 			this.listenTo(app.todos, 'filter', this.filterAll);
@@ -89,10 +89,18 @@ var app = app || {};
 
 		// Add all items in the **Todos** collection at once.
 		addAll: function () {
-            console.log('reset');
+            console.log('all');
 			this.$list.html('');
 			app.todos.each(this.addOne, this);
 		},
+
+        add:function(todo) {
+            console.log('add ',app.todoSort);
+            if (app.todoSort)
+                this.addAll();
+            else
+                this.addOne(todo);
+        },
 
         sortBy: function(e) {
             app.todoSort = $(e.target).data('bind');

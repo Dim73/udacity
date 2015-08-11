@@ -36,8 +36,8 @@ var app = app || {};
 		comparator: function(todo) {
             console.log('-----sort------');
             if (app.todoSort !== 'priority') {
-                console.log(todo.cid.substr(-1));
-                return todo.cid.substr(-1);
+                console.log(todo.cid.substr(1,-1));
+                return todo.cid.substr(1);
             } else {
                 if (todo.get('priority')) {
                     return -1;
