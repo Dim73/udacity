@@ -26,6 +26,10 @@ var app = app || {};
 			return this.where({completed: false});
 		},
 
+        deleted: function() {
+            return this.where({deleted: true})
+        },
+
 		// We keep the Todos in sequential order, despite being saved by unordered
 		// GUID in the database. This generates the next order number for new items.
 		nextOrder: function () {

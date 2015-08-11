@@ -33,7 +33,7 @@ var app = app || {};
 		// convenience.
 		initialize: function () {
 			this.listenTo(this.model, 'change', this.render);
-			this.listenTo(this.model, 'destroy', this.remove);
+			this.listenTo(this.model, 'delete', this.deleteMe);
 			this.listenTo(this.model, 'visible', this.toggleVisible);
 		},
 
@@ -59,12 +59,21 @@ var app = app || {};
 			return this;
 		},
 
+        deleteMe: function() {
+
+            this.model.toggleDelete();
+            this.toggleVisible();
+        },
+
 		toggleVisible: function () {
 			this.$el.toggleClass('hidden', this.isHidden());
 		},
 
 		isHidden: function () {
-            return app.TodoFilter === 'priority'?
+            console.log(this.model.get('deleted'));
+            return this.model.get('deleted')?
+                this.model.get('deleted'):
+                app.TodoFilter === 'priority'?
                 !this.model.get('priority'):
 			    this.model.get('completed') ?
 				app.TodoFilter === 'active' :

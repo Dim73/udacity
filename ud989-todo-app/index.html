@@ -62,6 +62,9 @@
 			<% if (completed) { %>
 			<button id="clear-completed">Clear completed (<%= completed %>)</button>
 			<% } %>
+            <% if (deleted) { %>
+            <button id="restore-deleted">Restore deleted (<%= deleted %>)</button>
+            <% } %>
 		</script>
 		<script src="bower_components/todomvc-common/base.js"></script>
 		<script src="bower_components/jquery/jquery.js"></script>

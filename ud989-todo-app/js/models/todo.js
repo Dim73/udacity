@@ -14,7 +14,8 @@ var app = app || {};
 		defaults: {
 			title: '',
 			completed: false,
-            priority: false
+            priority: false,
+            deleted: false
 		},
 
 		// Toggle the `completed` state of this todo item.
@@ -32,6 +33,13 @@ var app = app || {};
             });
             app.todos.sort();
             app.todos.trigger('reset');
+        },
+
+        toggleDelete: function() {
+            this.save({
+                deleted: !this.get('deleted'),
+                completed: this.get('deleted')
+            });
         }
 	});
 })();

@@ -21,6 +21,7 @@ var app = app || {};
 		events: {
 			'keypress #new-todo': 'createOnEnter',
 			'click #clear-completed': 'clearCompleted',
+            'click #restore-deleted': 'restoreDeleted',
 			'click #toggle-all': 'toggleAllComplete',
             'click #sortBy': 'sortBy'
 		},
@@ -53,6 +54,7 @@ var app = app || {};
 		render: function () {
 			var completed = app.todos.completed().length;
 			var remaining = app.todos.remaining().length;
+            var deleted = app.todos.deleted().length;
 
 			if (app.todos.length) {
 				this.$main.show();
@@ -60,7 +62,8 @@ var app = app || {};
 
 				this.$footer.html(this.statsTemplate({
 					completed: completed,
-					remaining: remaining
+					remaining: remaining,
+                    deleted: deleted
 				}));
 
 				this.$('#filters li a')
@@ -144,11 +147,21 @@ var app = app || {};
 			}
 		},
 
+        deleteOne: function (todo) {
+            todo.trigger('delete');
+        },
+
 		// Clear all completed todo items, destroying their models.
 		clearCompleted: function () {
-			_.invoke(app.todos.completed(), 'destroy');
+//			_.invoke(app.todos.completed(), 'destroy');
+            console.log(app.todos.completed());
+            _.each(app.todos.completed(), this.deleteOne);
 			return false;
 		},
+
+        restoreDeleted: function () {
+            _.each(app.todos.deleted(), this.deleteOne);
+        },
 
 		toggleAllComplete: function () {
 			var completed = this.allCheckbox.checked;

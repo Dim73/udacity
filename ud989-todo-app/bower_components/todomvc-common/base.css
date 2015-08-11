@@ -412,6 +412,19 @@ label[for='toggle-all'] {
 	box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.2);
 }
 
+#restore-deleted {
+    line-height: 20px;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.1);
+    font-size: 11px;
+    padding: 0 10px;
+    border-radius: 3px;
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+    position: absolute;
+    right: 0;
+    bottom: -34px;
+}
+
 #clear-completed:hover {
 	background: rgba(0, 0, 0, 0.15);
 	box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.3);
