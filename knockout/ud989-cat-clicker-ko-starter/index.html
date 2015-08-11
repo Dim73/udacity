@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat Clicker</title>
+</head>
+<body>
+    <ul id="cat-list" data-bind="foreach: catArr">
+        <li>
+            <a href="" data-bind="text: name, click: $root.setCurrentCat">
+
+            </a>
+        </li>
+    </ul>
+    <div id="cat">
+        <div class="cat-info__list" data-bind="foreach: catArr">
+            <div class="cat-info__item" data-bind="visible: $root.isCurrentCat() === $data">
+                <h2 data-bind="text: name"></h2>
+                <h3 data-bind="text: levelName"></h3>
+                <div data-bind="text: clickCount"></div>
+                <img data-bind="click: $root.incrementCount, attr: {src: imgSrc}" src="" alt="cute cat">
+
+                <div class="nicknames" data-bind="visible: nicknames.length > 0">
+                    <h2>
+                        Niknames
+                    </h2>
+                    <ul data-bind="foreach: nicknames">
+                        <li data-bind="text: $data"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/lib/knockout-3.2.0.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "koCatClckr",
+  "version": "1",
+  "homepage": "https://github.com/udacity/ud989-cat-clicker-ko-starter",
+  "authors": [
+    "mac <divanilov@hsmedia.ru>"
+  ],
+  "description": "cat clicker expample on ko",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+    "dependencies": {
+        "backbone": "~1.1.1",
+        "underscore": "~1.6.0",
+        "jquery": "~2.0.0",
+        "todomvc-common": "~0.3.0",
+        "backbone.localStorage": "~1.1.0"
+    }
+}
